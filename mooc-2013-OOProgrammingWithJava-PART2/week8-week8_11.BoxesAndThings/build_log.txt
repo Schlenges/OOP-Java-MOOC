@@ -42,12 +42,12 @@
 init:
 
 -deps-jar-init:
+   [delete] Deleting: /home/meike/NetBeansProjects/JavaMooc/mooc-2013-OOProgrammingWithJava-PART2/week8-week8_11.BoxesAndThings/build/built-jar.properties
 
 deps-jar:
-    [mkdir] Created dir: /home/meike/Code/java_mooc/mooc-2013-OOProgrammingWithJava-PART2/week8-week8_11.BoxesAndThings/build
 
 -warn-already-built-jar:
-[propertyfile] Updating property file: /home/meike/Code/java_mooc/mooc-2013-OOProgrammingWithJava-PART2/week8-week8_11.BoxesAndThings/build/built-jar.properties
+[propertyfile] Updating property file: /home/meike/NetBeansProjects/JavaMooc/mooc-2013-OOProgrammingWithJava-PART2/week8-week8_11.BoxesAndThings/build/built-jar.properties
 
 -check-automatic-build:
 
@@ -56,7 +56,6 @@ deps-jar:
 -verify-automatic-build:
 
 -pre-pre-compile:
-    [mkdir] Created dir: /home/meike/Code/java_mooc/mooc-2013-OOProgrammingWithJava-PART2/week8-week8_11.BoxesAndThings/build/classes
 
 -pre-compile:
 
@@ -65,28 +64,21 @@ deps-jar:
 -compile-depend:
 
 -do-compile:
-    [mkdir] Created dir: /home/meike/Code/java_mooc/mooc-2013-OOProgrammingWithJava-PART2/week8-week8_11.BoxesAndThings/build/empty
-    [mkdir] Created dir: /home/meike/Code/java_mooc/mooc-2013-OOProgrammingWithJava-PART2/week8-week8_11.BoxesAndThings/build/generated-sources/ap-source-output
-     [copy] Copying 1 file to /home/meike/Code/java_mooc/mooc-2013-OOProgrammingWithJava-PART2/week8-week8_11.BoxesAndThings/build/classes
+    [javac] Compiling 2 source files to /home/meike/NetBeansProjects/JavaMooc/mooc-2013-OOProgrammingWithJava-PART2/week8-week8_11.BoxesAndThings/build/classes
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.6
+    [javac] 1 warning
 
 -post-compile:
 
 compile:
 
 -pre-pre-compile-test:
-    [mkdir] Created dir: /home/meike/Code/java_mooc/mooc-2013-OOProgrammingWithJava-PART2/week8-week8_11.BoxesAndThings/build/test/classes
 
 -pre-compile-test:
 
 -compile-test-depend:
 
 -do-compile-test:
-    [javac] Compiling 2 source files to /home/meike/Code/java_mooc/mooc-2013-OOProgrammingWithJava-PART2/week8-week8_11.BoxesAndThings/build/test/classes
-    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.6
-    [javac] Note: /home/meike/Code/java_mooc/mooc-2013-OOProgrammingWithJava-PART2/week8-week8_11.BoxesAndThings/test/Part2And3And4BoxTest.java uses unchecked or unsafe operations.
-    [javac] Note: Recompile with -Xlint:unchecked for details.
-    [javac] 1 warning
-     [copy] Copying 1 file to /home/meike/Code/java_mooc/mooc-2013-OOProgrammingWithJava-PART2/week8-week8_11.BoxesAndThings/build/test/classes
 
 -post-compile-test:
 
