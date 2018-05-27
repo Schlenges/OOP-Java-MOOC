@@ -7,5 +7,12 @@ public class Divider {
         Scanner reader = new Scanner(System.in);
 
         // Implement your program here. Remember to ask the input from user.
+        System.out.println("Type a number: ");
+        int a = Integer.parseInt(reader.nextLine());
+        System.out.println("Type another number: ");
+        int b = Integer.parseInt(reader.nextLine());
+        double result = 1.0 * a / b;
+        System.out.println("");
+        System.out.println("Division: " + a + " / " + b + " = " + result);
     }
 }

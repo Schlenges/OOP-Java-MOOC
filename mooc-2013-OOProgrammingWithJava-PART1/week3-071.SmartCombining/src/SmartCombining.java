@@ -12,9 +12,17 @@ public class SmartCombining {
         Collections.addAll(list2, 5, 10, 4, 3, 7);
 
         // remove comment when method ready
-        //smartCombine(list1, list2);
+        smartCombine(list1, list2);
         System.out.println(list1);
         System.out.println(list2);
+    }
+    
+    public static void smartCombine(ArrayList<Integer> first, ArrayList<Integer> second){
+        for(int num : second){
+            if(!first.contains(num)){
+                first.add(num);
+            }
+        }
     }
 
 }

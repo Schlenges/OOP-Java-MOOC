@@ -7,5 +7,14 @@ public class PositiveValue {
         Scanner reader = new Scanner(System.in);
 
         // Type your program here:
+        System.out.println("Type a number: ");
+        int num = Integer.parseInt(reader.nextLine());
+        boolean isPositive = num > 0;
+        System.out.println("");
+        if (isPositive){
+            System.out.println("The number is positive.");
+        } else {
+            System.out.println("The number is not positive.");
+        }
     }
 }

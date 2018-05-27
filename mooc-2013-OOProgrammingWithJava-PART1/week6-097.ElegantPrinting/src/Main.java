@@ -9,5 +9,12 @@ public class Main {
 
     public static void printElegantly(int[] array) {
         // Write code here
+        for(int i = 0; i < array.length; i++){
+            if(i == 0){
+                System.out.print(array[i]);
+            } else {
+                System.out.print(", " + array[i]);
+            }
+        }
     }
 }

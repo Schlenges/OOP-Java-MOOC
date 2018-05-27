@@ -8,6 +8,12 @@ public class UpToCertainNumber {
         Scanner reader = new Scanner(System.in);
         
         // Write your code here
-        
+        System.out.println("Up to what number? ");
+        int limit = Integer.parseInt(reader.nextLine());
+        int num = 1;
+        while(num <= limit){
+            System.out.println(num);
+            num++;
+        }
     }
 }
