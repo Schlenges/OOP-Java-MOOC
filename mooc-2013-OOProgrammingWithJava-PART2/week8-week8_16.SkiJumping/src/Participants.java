@@ -10,7 +10,7 @@ import java.util.Collections;
  *
  * @author meike
  */
-public class Participants {
+public class Participants{
     private List<Jumper> participants;
     
     public Participants(){
@@ -19,6 +19,14 @@ public class Participants {
     
     public void add(Jumper jumper){
         participants.add(jumper);
+    }
+
+    public Jumper getJumper(int i){
+      return participants.get(i);
+    }
+
+    public int numberParticipants(){
+      return participants.size();
     }
     
     public void print(){
@@ -29,6 +37,18 @@ public class Participants {
 
     public void sort(){
       Collections.sort(participants);
+    }
+
+    public void sortByPoints(){
+      SortByPoints sorter = new SortByPoints();
+      Collections.sort(participants, sorter);
+    }
+
+    public void jump(){
+      for(Jumper jumper : participants){
+        jumper.setScore();
+        jumper.addJump();
+      }
     }
 
 }

@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.Collections;
+import java.util.*;
 
 public class Main {
 
@@ -11,9 +12,6 @@ public class Main {
         System.out.println("");
         System.out.println("Write the names of the participants one at a time; an empty string brings you to the jumping phase.");
         
-        // First, the simulator asks the user for the jumper names
-        // If the user inputs an empty string (i.e. presses enter), we move to the jumping phase
-        
         System.out.print("  Participant name: ");
         String name = reader.nextLine();
         
@@ -23,29 +21,70 @@ public class Main {
             name = reader.nextLine();
         }
         
-        System.out.println();
+        System.out.println("");
         System.out.println("The tournament begins!");
-        System.out.println();
-        System.out.println("Write \"jump\" to jump; otherwise you quit: ");
+
+        Tournament tournament = new Tournament(participants);
+
+        System.out.println("");
+        System.out.print("Write \"jump\" to jump; otherwise you quit: ");
         String command = reader.nextLine();
-        
+
         while(command.equals("jump")){
-            // do something
+            tournament.newRound();
+            // jumpers jump one by one in reverse order according to their points. The jumper with the less points always jumps first
+            System.out.println("");
+            System.out.println("Round " + tournament.getRound());
+            System.out.println("");
+
             participants.sort();
-            
-            System.out.println("Write \"jump\" to jump; otherwise you quit: ");
+
+            System.out.println("Jumping order:");
+            for(int i = 0; i < participants.numberParticipants(); i++){
+                int place = i+1;
+                System.out.println("  " + place + ". " + participants.getJumper(i));
+            }
+            System.out.println();
+
+            participants.jump();
+
+            System.out.println("Results of round " + tournament.getRound());
+            for(int i = 0; i < participants.numberParticipants(); i++){
+                Jumper jumper = participants.getJumper(i);
+                System.out.println("  " + jumper.getName());
+                System.out.println(jumper.getScore());
+            }
+
+            System.out.println();
+            System.out.print("Write \"jump\" to jump; otherwise you quit: ");
             command = reader.nextLine();
         }
+
+        System.out.println();
+        System.out.println("Thanks!");
+        System.out.println();
+
+        participants.sortByPoints();
+
+        System.out.println("Tournament results:");
+        System.out.println("Position    Name");
+        for(int i = 0; i < participants.numberParticipants(); i++){
+            Jumper jumper = participants.getJumper(i);
+            int position = i+1;
+            System.out.println(position + "           " + jumper);
+            System.out.print("            jump lengths: ");
+            for(int j = 0; j < jumper.getJumps().size(); j++){
+                List jumps = jumper.getJumps();
+                if(j == jumps.size()-1){
+                    System.out.print(jumps.get(j) + "m");
+                } else{
+                    System.out.print(jumps.get(j) + "m, ");
+                }
+            }
+            System.out.print("\n");
+        }
+
         
-        // jumpers jump one by one in reverse order according to their points. The jumper with the less points always jumps first
-
-        // total points of a jumper are calculated by adding up the points from their jumps
-
-        // Jump points are decided in relation to the jump length (use a random integer between 60-120) and judge decision
-
-        // Five judges vote for each jump (a vote is a random number between 10-20)
-
-        // The judge decision takes into consideration only three judge votes: the smallest and the greatest votes are not taken into account.
 
         // There are as many rounds as the user wants. When the user wants to quit, we print the tournament results
 
