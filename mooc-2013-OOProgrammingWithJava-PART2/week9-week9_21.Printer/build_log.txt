@@ -67,6 +67,7 @@ deps-jar:
     [javac] Compiling 1 source file to /home/meike/Code/java_mooc/mooc-2013-OOProgrammingWithJava-PART2/week9-week9_21.Printer/build/classes
     [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.6
     [javac] 1 warning
+     [copy] Copying 1 file to /home/meike/Code/java_mooc/mooc-2013-OOProgrammingWithJava-PART2/week9-week9_21.Printer/build/classes
 
 -post-compile:
 
