@@ -26,49 +26,50 @@ public class UserInterface{
     String input = reader.nextLine();
 
     while(!input.equals("x")){
+      int n = Integer.parseInt(input);
       String name;
       String number;
       String address;
 
-      switch(input) {
-        case "1":
+      switch(n) {
+        case 1:
           System.out.print("whose number: ");
           name = reader.nextLine();
           System.out.print("number: ");
           number = reader.nextLine();
           phonebook.addNumber(name, number);
           break;
-        case "2":
+        case 2:
           System.out.print("whose number: ");
           name = reader.nextLine();
           phonebook.printNumbers(name);
           break;
-        case "3":
+        case 3:
           System.out.print("number: ");
           number = reader.nextLine();
           System.out.println(" " + phonebook.personByNumber(number)); 
           break;
-        case "4":
+        case 4:
           System.out.print("whose address: ");
           name = reader.nextLine();
           System.out.print("street: ");
           address = reader.nextLine();
-          System.out.println("city: ");
+          System.out.print("city: ");
           address += " " + reader.nextLine();
           phonebook.addAddress(name, address);
           break;
-        case "5":
-          System.out.println("whose information: ");
+        case 5:
+          System.out.print("whose information: ");
           name = reader.nextLine();
           phonebook.getAllInfo(name);
           break;
-        case "6":
-          System.out.println("whose information: ");
+        case 6:
+          System.out.print("whose information: ");
           name = reader.nextLine();
           phonebook.deleteAll(name);
           break;
-        case "7":
-          System.out.println("keyword (if empty, all listed): ");
+        case 7:
+          System.out.print("keyword (if empty, all listed): ");
           name = reader.nextLine();
           phonebook.searchByKeyword(name);
           break;
