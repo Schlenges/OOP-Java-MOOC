@@ -2,6 +2,7 @@ package containers;
 
 import java.util.ArrayList;
 import java.lang.Math;
+import java.util.Collections;
 
 public class ContainerHistory{
   private ArrayList<Double> history;
@@ -18,12 +19,8 @@ public class ContainerHistory{
     history.clear();
   }
 
-  public String toString(){
-    return history.toString();
-  }
-
   public double maxValue(){
-    if(history.isEmpty()){
+    /* if(history.isEmpty()){
       return 0;
     }
 
@@ -34,11 +31,13 @@ public class ContainerHistory{
       }
     }
 
-    return max;
+    return max; */
+
+    return Collections.max(history);
   }
 
   public double minValue(){
-    if(history.isEmpty()){
+    /* if(history.isEmpty()){
       return 0;
     }
 
@@ -49,7 +48,9 @@ public class ContainerHistory{
       }
     }
 
-    return min;
+    return min; */
+
+    return Collections.min(history);
   }
 
   public double average(){
@@ -84,17 +85,19 @@ public class ContainerHistory{
   }
 
   public double variance(){
-    if(history.size() < 2){
-      return 0;
-    }
-    
     double sumDiffsSquared = 0;
+
     for(double value : history){
-        double diff = value - this.average();
+        double diff = value - average();
         diff *= diff;
         sumDiffsSquared += diff;
     }
 
     return sumDiffsSquared  / (history.size()-1);
+  }
+
+  @Override
+  public String toString(){
+    return history.toString();
   }
 }

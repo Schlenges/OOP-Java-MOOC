@@ -8,11 +8,6 @@ public class ProductContainer extends Container{
     this.productName = name;
   }
 
-  public ProductContainer(String name, double capacity, double volume){
-    super(capacity, volume);
-    this.productName = name;
-  }
-
   public void setName(String newName){
     this.productName = newName;
   }
