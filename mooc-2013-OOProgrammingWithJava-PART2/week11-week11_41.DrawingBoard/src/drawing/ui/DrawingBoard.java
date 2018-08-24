@@ -14,5 +14,11 @@ public class DrawingBoard extends JPanel {
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
 
+        graphics.setColor(Color.BLACK);
+        graphics.fillRect(100, 50, 50, 50);
+        graphics.fillRect(225, 50, 50, 50);
+        graphics.fillRect(50, 200, 50, 50);
+        graphics.fillRect(275, 200, 50, 50);
+        graphics.fillRect(100, 250, 175, 50);
     }
 }
