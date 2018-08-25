@@ -8,6 +8,7 @@ public class DrawingBoard extends JPanel{
   private Figure figure;
 
   public DrawingBoard(Figure figure){
+    super();
     this.figure = figure;
   }
 
