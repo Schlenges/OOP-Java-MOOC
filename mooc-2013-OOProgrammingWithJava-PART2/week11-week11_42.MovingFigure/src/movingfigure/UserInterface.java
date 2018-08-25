@@ -33,6 +33,7 @@ public class UserInterface implements Runnable {
     }
 
     private void addListeners() {
+        frame.addKeyListener(new KeyboardListener(frame.getContentPane().getComponent(0), figure));
     }
 
     public JFrame getFrame() {
