@@ -1,6 +1,7 @@
 package personnel;
 
 public class Person{
+  
   private String name;
   private Education education;
 
