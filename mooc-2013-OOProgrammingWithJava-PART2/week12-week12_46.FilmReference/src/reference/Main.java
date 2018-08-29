@@ -5,19 +5,23 @@ import reference.domain.*;
 public class Main {
 
     public static void main(String[] args) {
-        Film theBridgesOfMadisonCounty = new Film("The Bridges of Madison County");
+        RatingRegister ratings = new RatingRegister();
+
+        Film goneWithTheWind = new Film("Gone with the Wind");
         Film eraserhead = new Film("Eraserhead");
-
-        RatingRegister reg = new RatingRegister();
-        reg.addRating(eraserhead, Rating.BAD);
-        reg.addRating(eraserhead, Rating.BAD);
-        reg.addRating(eraserhead, Rating.GOOD);
-
-        reg.addRating(theBridgesOfMadisonCounty, Rating.GOOD);
-        reg.addRating(theBridgesOfMadisonCounty, Rating.FINE);
-
-        System.out.println("All ratings: " + reg.filmRatings());
-        System.out.println("Ratings for Eraserhead: " + reg.getRatings(eraserhead));
+    
+        Person matti = new Person("Matti");
+        Person pekka = new Person("Pekka");
+    
+        ratings.addRating(matti, goneWithTheWind, Rating.BAD);
+        ratings.addRating(matti, eraserhead, Rating.FINE);
+    
+        ratings.addRating(pekka, goneWithTheWind, Rating.GOOD);
+        ratings.addRating(pekka, eraserhead, Rating.GOOD);
+    
+        System.out.println("Ratings for Eraserhead: " + ratings.getRatings(eraserhead));
+        System.out.println("Matti's ratings: " + ratings.getPersonalRatings(matti));
+        System.out.println("Reviewers: " + ratings.reviewers());
 
     }
 }
