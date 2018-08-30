@@ -20,13 +20,53 @@ public class Reference{
   }
 
   public Film recommendFilm(Person person){
-    Collections.sort(films, new FilmComparator(ratings));
-    return films.get(0);
+    List<Person> reviewers = register.reviewers();
 
-/*     Map<Film, Rating> personalRatings = register.getPersonalRatings(person); */
+    if(!reviewers.contains(person)){
+      Collections.sort(films, new FilmComparator(ratings));
+      return films.get(0);
+    }
 
-/*     for(Film film : films){
-      System.out.println(personalRatings);
-    } */
+    Map<Film, Rating> personalRatings = register.getPersonalRatings(person);
+    int compatibility = 0;
+    Person compatiblePerson = reviewers.get(0);
+
+    for(Person reviewer : reviewers){
+      if(reviewer == person){
+        continue;
+      }
+
+      Map<Film, Rating> reviewerRatings = register.getPersonalRatings(reviewer);
+      int temp = 0;
+
+      for(Film film : reviewerRatings.keySet()){
+        if(personalRatings.containsKey(film) && personalRatings.get(film) != Rating.NOT_WATCHED){
+          temp += reviewerRatings.get(film).getValue() * personalRatings.get(film).getValue();
+        }
+      }
+
+      if(temp > compatibility || compatibility == 0){
+        compatibility = temp;
+        compatiblePerson = reviewer;
+      }
+    }
+
+    List<Film> recommended = new ArrayList<Film>();
+    for(Film film : register.getPersonalRatings(compatiblePerson).keySet()){
+      recommended.add(film);
+    }
+
+    Collections.sort(recommended, new RatingComparator(register.getPersonalRatings(compatiblePerson)));
+
+    Film recommendedFilm = recommended.get(0);
+
+    for(Film film : recommended){
+      if(!register.getPersonalRatings(person).containsKey(film) || register.getPersonalRatings(person).get(film) == Rating.NOT_WATCHED){
+        recommendedFilm = film;
+        break;
+      }
+    }
+
+    return recommendedFilm;
   }
 }

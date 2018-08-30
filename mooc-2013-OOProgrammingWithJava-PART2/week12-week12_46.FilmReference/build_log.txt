@@ -77,6 +77,7 @@ Trying to override old definition of task http://www.netbeans.org/ns/j2se-projec
 init:
 
 -deps-jar-init:
+   [delete] Deleting: /home/meike/Code/java_mooc/mooc-2013-OOProgrammingWithJava-PART2/week12-week12_46.FilmReference/build/built-jar.properties
 
 deps-jar:
 
@@ -98,8 +99,6 @@ deps-jar:
 -compile-depend:
 
 -do-compile:
-    [mkdir] Created dir: /home/meike/Code/java_mooc/mooc-2013-OOProgrammingWithJava-PART2/week12-week12_46.FilmReference/build/empty
-    [mkdir] Created dir: /home/meike/Code/java_mooc/mooc-2013-OOProgrammingWithJava-PART2/week12-week12_46.FilmReference/build/generated-sources/ap-source-output
     [javac] Compiling 1 source file to /home/meike/Code/java_mooc/mooc-2013-OOProgrammingWithJava-PART2/week12-week12_46.FilmReference/build/classes
     [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.6
     [javac] 1 warning
@@ -109,22 +108,16 @@ deps-jar:
 compile:
 
 -pre-pre-compile-test:
-    [mkdir] Created dir: /home/meike/Code/java_mooc/mooc-2013-OOProgrammingWithJava-PART2/week12-week12_46.FilmReference/build/test/classes
 
 -pre-compile-test:
 
 -compile-test-depend:
 
 -do-compile-test:
-    [javac] Compiling 3 source files to /home/meike/Code/java_mooc/mooc-2013-OOProgrammingWithJava-PART2/week12-week12_46.FilmReference/build/test/classes
-    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.6
-    [javac] Note: Some input files use unchecked or unsafe operations.
-    [javac] Note: Recompile with -Xlint:unchecked for details.
-    [javac] 1 warning
 
 -post-compile-test:
 
 compile-test:
 
 BUILD SUCCESSFUL
-Total time: 1 second
+Total time: 0 seconds

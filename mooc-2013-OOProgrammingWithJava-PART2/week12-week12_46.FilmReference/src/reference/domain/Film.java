@@ -27,9 +27,9 @@ public class Film{
       return false;
     }
 
-    Person otherPerson = (Person) object;
+    Film otherFilm = (Film) object;
 
-    if(this.name != otherPerson.getName()){
+    if(this.hashCode() != otherFilm.hashCode()){
       return false;
     }
 
