@@ -5,6 +5,7 @@ import java.util.Map;
 import reference.domain.*;
 
 public class PersonComparator implements Comparator<Person>{
+
   private Map<Person, Integer> identities;
 
   public PersonComparator(Map<Person, Integer> peopleIdentities){
@@ -15,4 +16,5 @@ public class PersonComparator implements Comparator<Person>{
   public int compare(Person one, Person two){
     return identities.get(two).compareTo(identities.get(one));
   }
+  
 }

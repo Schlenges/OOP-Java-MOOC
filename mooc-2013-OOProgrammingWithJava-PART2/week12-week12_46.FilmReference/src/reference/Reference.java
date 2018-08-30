@@ -5,6 +5,7 @@ import reference.domain.*;
 import reference.comparator.*;
 
 public class Reference{
+
   private RatingRegister register;
   private Map<Film, List<Rating>> ratings;
   private List<Film> films;
@@ -27,9 +28,17 @@ public class Reference{
       return films.get(0);
     }
 
+    Map<Person, Integer> compatibilities = getCompatibilities(reviewers, person);
+
+    List<Person> compatibleReviewers = new ArrayList<Person>(compatibilities.keySet());
+    Collections.sort(compatibleReviewers, new PersonComparator(compatibilities));
+
+    return getRecommendedFilm(person, compatibleReviewers);    
+  }
+
+  private Map<Person, Integer> getCompatibilities(List<Person> reviewers, Person person){
     Map<Film, Rating> personalRatings = register.getPersonalRatings(person);
-    int compatibility = 0;
-    Person compatiblePerson = reviewers.get(0);
+    Map<Person, Integer> compatibilities = new HashMap<Person, Integer>();
 
     for(Person reviewer : reviewers){
       if(reviewer == person){
@@ -37,36 +46,38 @@ public class Reference{
       }
 
       Map<Film, Rating> reviewerRatings = register.getPersonalRatings(reviewer);
-      int temp = 0;
+      int compatibility = 0;
 
       for(Film film : reviewerRatings.keySet()){
-        if(personalRatings.containsKey(film) && personalRatings.get(film) != Rating.NOT_WATCHED){
-          temp += reviewerRatings.get(film).getValue() * personalRatings.get(film).getValue();
+        if(personalRatings.containsKey(film)){
+          compatibility += reviewerRatings.get(film).getValue() * personalRatings.get(film).getValue();
         }
       }
 
-      if(temp > compatibility || compatibility == 0){
-        compatibility = temp;
-        compatiblePerson = reviewer;
+      compatibilities.put(reviewer, compatibility);
+
+    }
+
+    return compatibilities;
+  }
+
+  private Film getRecommendedFilm(Person person, List<Person> compatibleReviewers){
+    for(Person reviewer : compatibleReviewers){
+      if(reviewer == person){
+        continue;
+      }
+
+      for(Film film : register.getPersonalRatings(reviewer).keySet()){
+        if(register.getPersonalRatings(person).keySet().contains(film)){
+          continue;
+        }
+
+        if (register.getPersonalRatings(reviewer).get(film).getValue() > 1) {
+          return film;
+        }
       }
     }
 
-    List<Film> recommended = new ArrayList<Film>();
-    for(Film film : register.getPersonalRatings(compatiblePerson).keySet()){
-      recommended.add(film);
-    }
-
-    Collections.sort(recommended, new RatingComparator(register.getPersonalRatings(compatiblePerson)));
-
-    Film recommendedFilm = recommended.get(0);
-
-    for(Film film : recommended){
-      if(!register.getPersonalRatings(person).containsKey(film) || register.getPersonalRatings(person).get(film) == Rating.NOT_WATCHED){
-        recommendedFilm = film;
-        break;
-      }
-    }
-
-    return recommendedFilm;
+    return null;
   }
 }

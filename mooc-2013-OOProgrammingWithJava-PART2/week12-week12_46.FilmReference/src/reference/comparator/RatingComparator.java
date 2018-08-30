@@ -7,6 +7,7 @@ import java.util.Map;
 import reference.domain.*;
 
 public class RatingComparator implements Comparator<Film>{
+
   private Map<Film, Rating> movies;
 
   public RatingComparator(Map<Film, Rating> ratings){
@@ -17,4 +18,5 @@ public class RatingComparator implements Comparator<Film>{
   public int compare(Film one, Film two){
     return movies.get(one).compareTo(movies.get(two));
   }
+  
 }
