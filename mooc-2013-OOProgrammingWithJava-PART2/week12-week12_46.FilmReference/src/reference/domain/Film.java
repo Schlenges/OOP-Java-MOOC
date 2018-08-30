@@ -14,7 +14,7 @@ public class Film{
 
   @Override
   public String toString(){
-    return "" + name;
+    return name;
   }
 
   @Override
@@ -23,7 +23,7 @@ public class Film{
       return false;
     }
 
-    if(this.getClass() != object.getClass()) {
+    if(getClass() != object.getClass()) {
       return false;
     }
 

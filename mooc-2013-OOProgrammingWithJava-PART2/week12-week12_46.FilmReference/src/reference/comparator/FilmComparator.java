@@ -7,23 +7,22 @@ import java.util.Map;
 import reference.domain.*;
 
 public class FilmComparator implements Comparator<Film>{
-  
+
   private Map<Film, List<Rating>> movies;
 
   public FilmComparator(Map<Film, List<Rating>> ratings){
     movies = ratings;
   }
 
-  public Integer getAverage(Film film){
+  public Double getAverage(Film film){
     List<Rating> ratings = movies.get(film);
-    Integer average = 0;
+    int sum = 0;
 
     for(Rating rating : ratings){
-      average += rating.getValue();
+      sum += rating.getValue();
     }
 
-    average /= ratings.size();
-    return average;
+    return 1.0 * sum / ratings.size();
   }
 
   @Override

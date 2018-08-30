@@ -19,19 +19,13 @@ public class RatingRegister{
 
   public void addRating(Film film, Rating rating){
     if(!register.containsKey(film)){
-      List<Rating> ratings = new ArrayList<Rating>();
-      ratings.add(rating);
-      register.put(film, ratings);
-    } else {
-      register.get(film).add(rating);
+      register.put(film, new ArrayList<Rating>());
     }
+
+    register.get(film).add(rating);
   } 
 
   public List<Rating> getRatings(Film film){
-    if(!register.containsKey(film)){
-      return null;
-    }
-
     return register.get(film);
   }
 
@@ -43,16 +37,16 @@ public class RatingRegister{
     Map<Film, Rating> ratings = new HashMap<Film, Rating>();
 
     if(!personalRatings.containsKey(person)){
-      ratings.put(film, rating);
       personalRatings.put(person, ratings);
-    } else{
-      ratings = personalRatings.get(person);
-      
-      if(!ratings.containsKey(film)){
-        ratings.put(film, rating);
-      }
     }
 
+    ratings = personalRatings.get(person);
+      
+    if(ratings.containsKey(film)){
+      return;
+    }
+
+    ratings.put(film, rating);
     addRating(film, rating);
   }
 
@@ -73,17 +67,12 @@ public class RatingRegister{
     if(!personalRatings.containsKey(person)){
       return new HashMap<Film, Rating>();
     }
+
     return personalRatings.get(person);
   }
 
   public List<Person> reviewers(){
-    List<Person> reviewers = new ArrayList<Person>();
-
-    for(Person person : personalRatings.keySet()){
-      reviewers.add(person);
-    }
-
-    return reviewers;
+    return new ArrayList<Person>(personalRatings.keySet());
   }
-  
+
 }

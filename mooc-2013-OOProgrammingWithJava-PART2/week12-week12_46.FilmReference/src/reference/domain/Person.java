@@ -14,7 +14,7 @@ public class Person{
 
   @Override
   public String toString(){
-    return "" + name;
+    return name;
   }
 
   @Override
@@ -23,7 +23,7 @@ public class Person{
       return false;
     }
 
-    if(this.getClass() != object.getClass()) {
+    if(getClass() != object.getClass()) {
       return false;
     }
 
@@ -39,7 +39,7 @@ public class Person{
   @Override
   public int hashCode(){
     if(name == null) {
-      return 7;
+      return 3;
     }
 
     return name.hashCode();
