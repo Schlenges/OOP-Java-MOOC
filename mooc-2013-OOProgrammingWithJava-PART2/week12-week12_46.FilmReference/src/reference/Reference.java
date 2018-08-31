@@ -7,24 +7,18 @@ import reference.comparator.*;
 public class Reference{
 
   private RatingRegister register;
-  private Map<Film, List<Rating>> ratings;
   private List<Film> films;
 
   public Reference(RatingRegister register){
     this.register = register;
-    this.ratings = register.filmRatings();
-    films = new ArrayList<Film>();
-    
-    for(Film film : ratings.keySet()){
-      films.add(film);
-    }
+    this.films = new ArrayList<Film>(register.filmRatings().keySet());
   }
 
   public Film recommendFilm(Person person){
     List<Person> reviewers = register.reviewers();
 
     if(!reviewers.contains(person)){
-      Collections.sort(films, new FilmComparator(ratings));
+      Collections.sort(films, new FilmComparator(register.filmRatings()));
       return films.get(0);
     }
 
