@@ -2,7 +2,7 @@ package reader.criteria;
 
 public class Not implements Criterion{
 
-  Criterion criterion;
+  private Criterion criterion;
 
   public Not(Criterion criterion){
     this.criterion = criterion;

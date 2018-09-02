@@ -2,8 +2,8 @@ package reader.criteria;
 
 public class Both implements Criterion{
 
-  Criterion one;
-  Criterion two;
+  private Criterion one;
+  private Criterion two;
 
   public Both(Criterion one, Criterion two){
     this.one = one;
