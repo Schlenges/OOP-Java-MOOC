@@ -36,6 +36,10 @@ public class Worm{
     return pieces;
   }
 
+  public Piece getHeadPiece(){
+    return pieces.get(getLength()-1);
+  }
+
   public void move(){
 
     if(getLength() >= 3 && grows == false){
