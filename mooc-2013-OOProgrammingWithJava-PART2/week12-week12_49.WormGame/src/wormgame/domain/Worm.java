@@ -69,8 +69,12 @@ public class Worm{
   }
 
   public boolean runsInto(Piece piece){
-    // checks whether the worm runs into the parameter piece.
-    // If so -- that is, if a piece of the worm runs into the parameter piece -- the method returns the value true; otherwise it returns false.
+    for(Piece wormPiece : pieces){
+      if(wormPiece.runsInto(piece)){
+        return true;
+      }
+    }
+
     return false;
   }
 
