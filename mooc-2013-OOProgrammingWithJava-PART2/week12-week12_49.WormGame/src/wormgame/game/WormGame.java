@@ -16,7 +16,6 @@ public class WormGame extends Timer implements ActionListener {
     private Updatable updatable;
     private Worm worm;
     private Apple apple;
-    private Random random;
 
     public WormGame(int width, int height) {
         super(1000, null);
@@ -29,16 +28,8 @@ public class WormGame extends Timer implements ActionListener {
         setInitialDelay(2000);
 
         worm = new Worm(width/2, height/2, Direction.DOWN);
-
-        random = new Random();
-        
-        apple = new Apple(random.nextInt(width), random.nextInt(height));
-
-        while(worm.runsInto(apple)){
-            apple = new Apple(random.nextInt(width), random.nextInt(height));
-        }
+        createApple();
     }
-
 
     public boolean continues() {
         return continues;
@@ -72,9 +63,19 @@ public class WormGame extends Timer implements ActionListener {
         this.apple = apple;
     }
 
+    private void createApple(){
+        while(true){
+            Random random = new Random();
+            apple = new Apple(random.nextInt(width), random.nextInt(height));
+            if (!worm.runsInto(apple)) {
+                break;
+            }
+        }
+    }
+
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (!continues) {
+        if(!continues){
             return;
         }
 
@@ -82,21 +83,26 @@ public class WormGame extends Timer implements ActionListener {
 
         if(worm.runsInto(apple)){
             worm.grow();
-            apple = new Apple(random.nextInt(width), random.nextInt(height));
-
-            while(worm.runsInto(apple)){
-                apple = new Apple(random.nextInt(width), random.nextInt(height));
-            }
+            createApple();
         }
 
-        Piece headPiece = worm.getHeadPiece();
-
-        if(worm.runsIntoItself() || headPiece.getX() >= width || headPiece.getX() <= 0 || headPiece.getY() >= height || headPiece.getY() <= 0){
+        
+        if(worm.runsIntoItself() || runsIntoBorder()){
             continues = false;
         }
 
         updatable.update();
         setDelay(1000 / worm.getLength());
+    }
+
+    private boolean runsIntoBorder(){
+        Piece headPiece = worm.getHeadPiece();
+
+        if(headPiece.getX() >= width || headPiece.getX() <= 0 || headPiece.getY() >= height || headPiece.getY() <= 0){
+            return true;
+        }
+
+        return false;
     }
 
 }

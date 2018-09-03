@@ -11,13 +11,13 @@ public class Worm{
   private Direction direction;
   private boolean grows;
 
-  public Worm(int originalX, int originalY, Direction originalDirection){
-    pieces = new ArrayList<Piece>();
-    pieces.add(new Piece(originalX, originalY));
-    x = originalX;
-    y = originalY;
-    direction = originalDirection;
-    grows = true;
+  public Worm(int x, int y, Direction direction){
+    this.x = x;
+    this.y = y;
+    this.direction = direction;
+    this.pieces = new ArrayList<Piece>();
+    this.pieces.add(new Piece(x, y));
+    this.grows = true;
   }
 
   public Direction getDirection(){
@@ -42,29 +42,21 @@ public class Worm{
 
   public void move(){
 
-    if(getLength() >= 3 && grows == false){
+    if(getLength() > 2 && !grows){
       pieces.remove(0);
     }
 
-    switch(this.direction){
-      case RIGHT:
+    if(direction == Direction.RIGHT){
         x++;
-        pieces.add(new Piece(x, y));
-        break;
-      case LEFT:
+    } else if(direction == Direction.LEFT){
         x--;
-        pieces.add(new Piece(x, y));
-        break;
-      case UP:
+    } else if(direction == Direction.UP){
         y--;
-        pieces.add(new Piece(x, y));
-        break;
-      case DOWN:
+    } else{
         y++;
-        pieces.add(new Piece(x, y));
-        break;
     }
 
+    pieces.add(new Piece(x, y));
     grows = false;
   }
 
@@ -83,17 +75,16 @@ public class Worm{
   }
 
   public boolean runsIntoItself(){
-    boolean crash = false;
 
     for(int i = 0; i < pieces.size()-1; i++){
-      for(int j = i+1; j < pieces.size(); j++){
+      for(int j = i + 1; j < pieces.size(); j++){
         if(pieces.get(i).runsInto(pieces.get(j))){
-          crash = true;
-          break;
+          return true;
         }
       }
     }
 
-    return crash;
+    return false;
   }
+
 }

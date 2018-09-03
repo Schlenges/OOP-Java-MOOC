@@ -3,6 +3,8 @@ package wormgame.gui;
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
+
+import wormgame.domain.Apple;
 import wormgame.domain.Piece;
 import wormgame.game.WormGame;
 import java.util.List;
@@ -10,33 +12,25 @@ import java.util.List;
 public class DrawingBoard extends JPanel implements Updatable{
 
   private WormGame game;
-  private int pieceLength;
+  private int length;
 
-  public DrawingBoard(WormGame game, int pieceLength){
-    super();
+  public DrawingBoard(WormGame game, int length){
     this.game = game;
-    this.pieceLength = pieceLength;
+    this.length = length;
   }
 
   @Override
   public void paintComponent(Graphics graphics){
     super.paintComponent(graphics);
     
-    // paint worm
-    List<Piece> wormPieces = game.getWorm().getPieces();
-
     graphics.setColor(Color.BLACK);
-
-    for(Piece piece : wormPieces){
-      graphics.fill3DRect(piece.getX()*pieceLength, piece.getY()*pieceLength, pieceLength, pieceLength, true);
+    for(Piece piece : game.getWorm().getPieces()){
+      graphics.fill3DRect(piece.getX() * length, piece.getY() * length, length, length, true);
     }
 
-    // paint apple
-    Piece apple = game.getApple();
-
     graphics.setColor(Color.RED);
-
-    graphics.fillOval(apple.getX()*pieceLength, apple.getY()*pieceLength, pieceLength, pieceLength);
+    Apple apple = game.getApple();
+    graphics.fillOval(apple.getX() * length, apple.getY() * length, length, length);
   }
 
   @Override

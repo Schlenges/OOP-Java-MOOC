@@ -99,7 +99,7 @@ deps-jar:
 -compile-depend:
 
 -do-compile:
-    [javac] Compiling 1 source file to /home/meike/Code/java_mooc/mooc-2013-OOProgrammingWithJava-PART2/week12-week12_49.WormGame/build/classes
+    [javac] Compiling 2 source files to /home/meike/Code/java_mooc/mooc-2013-OOProgrammingWithJava-PART2/week12-week12_49.WormGame/build/classes
     [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.6
     [javac] 1 warning
 
