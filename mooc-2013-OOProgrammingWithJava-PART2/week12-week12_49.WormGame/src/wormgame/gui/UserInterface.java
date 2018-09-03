@@ -1,5 +1,6 @@
 package wormgame.gui;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import javax.swing.JFrame;
@@ -28,6 +29,7 @@ public class UserInterface implements Runnable {
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
+        frame.setBackground(Color.BLACK);
         createComponents(frame.getContentPane());
 
         frame.pack();

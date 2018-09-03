@@ -23,7 +23,8 @@ public class DrawingBoard extends JPanel implements Updatable{
   public void paintComponent(Graphics graphics){
     super.paintComponent(graphics);
     
-    graphics.setColor(Color.BLACK);
+    setBackground(Color.BLACK);
+    graphics.setColor(Color.WHITE);
     for(Piece piece : game.getWorm().getPieces()){
       graphics.fill3DRect(piece.getX() * length, piece.getY() * length, length, length, true);
     }

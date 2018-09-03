@@ -98,7 +98,7 @@ public class WormGame extends Timer implements ActionListener {
     private boolean runsIntoBorder(){
         Piece headPiece = worm.getHeadPiece();
 
-        if(headPiece.getX() >= width || headPiece.getX() <= 0 || headPiece.getY() >= height || headPiece.getY() <= 0){
+        if(headPiece.getX() > width || headPiece.getX() < 0 || headPiece.getY() > height || headPiece.getY() < 0){
             return true;
         }
 
