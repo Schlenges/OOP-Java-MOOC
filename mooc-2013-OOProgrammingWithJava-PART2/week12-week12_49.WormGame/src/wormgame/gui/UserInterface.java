@@ -39,7 +39,7 @@ public class UserInterface implements Runnable {
     public void createComponents(Container container) {
         drawingBoard = new DrawingBoard(game, sideLength);
         container.add(drawingBoard);
-        frame.addKeyListener(new KeyboardListener(game.getWorm()));
+        frame.addKeyListener(new KeyboardListener(game));
     }
 
     public Updatable getUpdatable(){

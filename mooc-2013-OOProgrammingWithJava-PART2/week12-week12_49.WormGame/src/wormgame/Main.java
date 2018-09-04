@@ -22,6 +22,6 @@ public class Main {
         }
 
         game.setUpdatable(ui.getUpdatable());
-        game.start();
+        game.start(); // starts Swing's Timer, which will start sending action events
     }
 }

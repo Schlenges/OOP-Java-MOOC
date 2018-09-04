@@ -4,19 +4,20 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import wormgame.Direction;
 import wormgame.domain.Worm;
+import wormgame.game.WormGame;
 
 public class KeyboardListener implements KeyListener{
 
-  private Worm worm;
+  private WormGame game;
 
-  public KeyboardListener(Worm worm){
-    this.worm = worm;
+  public KeyboardListener(WormGame game){
+    this.game = game;
   }
 
   @Override
   public void keyPressed(KeyEvent e){
 
-    Direction direction = worm.getDirection();
+    Direction direction = game.getWorm().getDirection();
 
     switch(e.getKeyCode()){
       case KeyEvent.VK_LEFT:
@@ -31,9 +32,12 @@ public class KeyboardListener implements KeyListener{
       case KeyEvent.VK_DOWN:
         direction = Direction.DOWN;
         break;
+      case KeyEvent.VK_SPACE:
+        game.reset();
+        break;
     }
 
-    worm.setDirection(direction);
+    game.getWorm().setDirection(direction);
   }
 
   @Override

@@ -8,7 +8,7 @@ import wormgame.Direction;
 import wormgame.gui.Updatable;
 import wormgame.domain.*;
 
-public class WormGame extends Timer implements ActionListener {
+public class WormGame extends Timer implements ActionListener{
 
     private int width;
     private int height;
@@ -27,7 +27,7 @@ public class WormGame extends Timer implements ActionListener {
         addActionListener(this);
         setInitialDelay(2000);
 
-        worm = new Worm(width/2, height/2, Direction.DOWN);
+        createWorm();
         createApple();
     }
 
@@ -45,6 +45,10 @@ public class WormGame extends Timer implements ActionListener {
 
     public int getWidth() {
         return width;
+    }
+
+    public void createWorm(){
+        worm = new Worm(width/2, height/2, Direction.DOWN);
     }
 
     public Worm getWorm(){
@@ -74,7 +78,7 @@ public class WormGame extends Timer implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent ae) {
+    public void actionPerformed(ActionEvent ae) { // listens to the sent action events by Swing's Timer
         if(!continues){
             return;
         }
@@ -86,13 +90,19 @@ public class WormGame extends Timer implements ActionListener {
             createApple();
         }
 
-        
         if(worm.runsIntoItself() || runsIntoBorder()){
             continues = false;
         }
 
-        updatable.update();
-        setDelay(1000 / worm.getLength());
+        updatable.update(); // Drawing Board repaint method
+        setDelay(1000 / worm.getLength()); // worm speed
+
+    }
+
+    public void reset(){
+        createWorm();
+        createApple();
+        continues = true;
     }
 
     private boolean runsIntoBorder(){
